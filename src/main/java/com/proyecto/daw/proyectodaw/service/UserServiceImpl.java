@@ -3,10 +3,13 @@ package com.proyecto.daw.proyectodaw.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.proyecto.daw.proyectodaw.dao.UserDao;
 import com.proyecto.daw.proyectodaw.domain.User;
+import com.proyecto.daw.proyectodaw.dto.UserDto;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     @Autowired
@@ -14,26 +17,30 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> listAll() {
-        // TODO Auto-generated method stub
+        
         return userDao.findAll();       
     }
 
     @Override
     public User save(User user) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
     @Override
     public void delete(long id) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 
     @Override
-    public User findByUserName(String userName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByUserName'");
+    public UserDto findByUserName(String userName) {
+
+        var user = userDao.findByUserName(userName);        
+        return user!=null?UserDto.builder()
+                .userName(user.getUserName())
+                .password(user.getPassword())                
+                .build():UserDto.builder().build();
     }
     
 }

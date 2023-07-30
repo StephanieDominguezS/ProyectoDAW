@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="rol")
+@Table(name="rol", schema = "SchoolDB")
 public class Rol implements Serializable{
     
     private static final long serialVersionUID = 1L;

@@ -3,6 +3,7 @@ package com.proyecto.daw.proyectodaw.service;
 import java.util.List;
 
 import com.proyecto.daw.proyectodaw.domain.User;
+import com.proyecto.daw.proyectodaw.dto.UserDto;
 
 public interface UserService {
     
@@ -12,6 +13,6 @@ public interface UserService {
     
     public void delete(long id);
 
-    public User findByUserName(String userName);
+    public UserDto findByUserName(String userName);
 
 }

@@ -6,5 +6,7 @@ import com.proyecto.daw.proyectodaw.domain.User;
 
 
 public interface UserDao extends JpaRepository<User, Long>{
+   
     User findByUserName(String userName);
+
 }
