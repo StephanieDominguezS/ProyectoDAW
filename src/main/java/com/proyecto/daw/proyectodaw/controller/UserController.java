@@ -58,7 +58,7 @@ public class UserController {
     @PostMapping("/user/new")
     public ResponseEntity<Object> createUser(@RequestBody UserDto newUser) {
         
-        var user = userService.findByUserName(newUser.getUserName());
+        var user = userService.save(newUser);
         if (user == null) {
             return ResponseEntity.notFound().build();
         }else {

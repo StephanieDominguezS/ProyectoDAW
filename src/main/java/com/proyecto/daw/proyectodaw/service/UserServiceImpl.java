@@ -22,9 +22,22 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User save(User user) {
+    public UserDto save(UserDto userDto) {
+    	var user = userDao.findByUserName(userDto.getUserName());
+    	if (user!=null) {
+			return UserDto.builder()
+	                .userName(user.getUserName())
+	                .password(user.getPassword())                
+	                .build();
+		}else {
+			var resul= userDao.save(User.builder()
+					.userName(userDto.getUserName())
+					.password(userDto.getPassword())
+					.build());
+			System.out.println(resul.getIdUser());
+			return userDto;
+		}
         
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
     }
 
     @Override

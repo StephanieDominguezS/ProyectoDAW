@@ -9,7 +9,7 @@ public interface UserService {
     
     public List<User> listAll();
     
-    public User save(User user);
+    public UserDto save(UserDto user);
     
     public void delete(long id);
 
