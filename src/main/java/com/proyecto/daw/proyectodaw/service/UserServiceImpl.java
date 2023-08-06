@@ -11,7 +11,6 @@ import com.proyecto.daw.proyectodaw.dao.UserDao;
 import com.proyecto.daw.proyectodaw.domain.Rol;
 import com.proyecto.daw.proyectodaw.domain.User;
 import com.proyecto.daw.proyectodaw.dto.UserDto;
-import com.proyecto.daw.proyectodaw.dto.UserDto.UserDtoBuilder;
 
 import lombok.extern.log4j.Log4j2;
 
