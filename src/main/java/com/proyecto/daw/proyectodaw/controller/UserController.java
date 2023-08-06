@@ -1,5 +1,7 @@
 package com.proyecto.daw.proyectodaw.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,7 +58,7 @@ public class UserController {
 
     //Crear un nuevo usuario
     @PostMapping("/user/new")
-    public ResponseEntity<Object> createUser(@RequestBody UserDto newUser) {
+    public ResponseEntity<Object> createUser(@Valid @RequestBody UserDto newUser) {
         
         var user = userService.save(newUser);
         if (user == null) {

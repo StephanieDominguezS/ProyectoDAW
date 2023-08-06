@@ -25,20 +25,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "user", schema = "SchoolDB")
+@Table(name = "user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
+    @Column(name = "id_user", nullable = false)
     private Long idUser;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", length = 100)
     private String userName;
 
-    @Column(name = "user_password")
+    @Column(name = "user_password", length = 100)
     private String password;
  
     @OneToMany

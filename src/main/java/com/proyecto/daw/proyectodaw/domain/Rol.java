@@ -9,22 +9,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
-@Table(name="rol", schema = "SchoolDB")
+@Table(name="rol")
 public class Rol implements Serializable{
     
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_rol")
+    @Column(name="id_rol", nullable = false)
     private Long idRol;
 
-    @Column(name="rol_name")
+    @Column(name="rol_name", length = 50)
     private String rolName;
+
+    @Column(name="id_user", length = 50)
+    private Long user;
 }
