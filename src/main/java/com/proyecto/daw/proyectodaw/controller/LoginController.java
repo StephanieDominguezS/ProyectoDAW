@@ -22,9 +22,9 @@ public class LoginController {
 
     @PostMapping("/login")
     public String processLoginForm(@Valid @ModelAttribute("userDto") UserDto userDto, BindingResult result) {
-        if (result.hasErrors()) {
+        /*if (result.hasErrors()) {
             return "login";
-        }
+        }*/
         // Aquí puedes implementar la lógica para autenticar al usuario
         // y redirigir a la página correspondiente después del inicio de sesión exitoso.
         return "redirect:/home"; // Ejemplo: redirigir a la página de inicio (home).

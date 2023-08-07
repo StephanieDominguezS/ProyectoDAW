@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .img-thumbnail {
+            width: 15%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Logo -->
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <img src="https://th.bing.com/th/id/OIP.LTHXtlv3LeQBn5X9Pte9wQHaEF?pid=ImgDet&rs=1" class="img-fluid" alt="Logo">
+            </div>
+        </div>
+        <!-- Opciones -->
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <a href="/cursos_horios" class="btn btn-primary btn-block mb-3">                    
+                    Cursos y Horario
+                </a>
+            </div>
+            <div class="col-md-12 text-right"> <!-- Agregamos la clase "text-right" para alinear a la derecha -->
+                <a href="/salones" class="btn btn-primary btn-block mb-3">                    
+                    Salones
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a href="/profesores" class="btn btn-primary btn-block mb-3">
+                    Profesores
+                </a>
+            </div>
+        </div>
+        <!-- Botón de cierre de sesión -->
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+                <a href="/home" class="btn btn-danger">Volver</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
