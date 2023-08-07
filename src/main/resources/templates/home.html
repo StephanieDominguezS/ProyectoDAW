@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .img-thumbnail {
+            width: 15%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Logo -->
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <img src="https://th.bing.com/th/id/OIP.LTHXtlv3LeQBn5X9Pte9wQHaEF?pid=ImgDet&rs=1" class="img-fluid" alt="Logo">
+            </div>
+        </div>
+        <!-- Opciones -->
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <a href="/alumnos" class="btn btn-primary btn-block mb-3">
+                    <img src="https://th.bing.com/th/id/R.c5d910b46811bf2505f23b3cf9db4d21?rik=0hp7N8jSdCgoUg&riu=http%3a%2f%2ficons.iconarchive.com%2ficons%2fwebalys%2fkameleon.pics%2f512%2fStudent-3-icon.png&ehk=jIFeN7ppZaXSI7rBF5ofycjeLD3UFSLa1umkdiBvnwY%3d&risl=&pid=ImgRaw&r=0" class="img-thumbnail" alt="Alumnos">
+                    Alumnos
+                </a>
+            </div>
+            <div class="col-md-12 text-right"> <!-- Agregamos la clase "text-right" para alinear a la derecha -->
+                <a href="/padres" class="btn btn-primary btn-block mb-3">
+                    <img src="https://th.bing.com/th/id/R.4e064a5593d66abec8d3b64e37ed114c?rik=WWw5bwVoGX4M6A&pid=ImgRaw&r=0" class="img-thumbnail" alt="Padres">
+                    Padres
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a href="/profesores" class="btn btn-primary btn-block mb-3">
+                    <img src="https://th.bing.com/th/id/R.d2e49d5ff7d4a78360c3101699ca038e?rik=hqhA3GxWgoookQ&riu=http%3a%2f%2foperoo.com%2fwp-content%2fuploads%2f2020%2f09%2fshutterstock_1703595283.png&ehk=2aSmalSwyI75glrj6%2bVvvo7q3Fz4Gy0nRmC01aqInEU%3d&risl=&pid=ImgRaw&r=0" class="img-thumbnail" alt="Profesores">
+                    Profesores
+                </a>
+            </div>
+        </div>
+        <!-- Botón de cierre de sesión -->
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+                <a href="/login" class="btn btn-danger">Cerrar sesión</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
