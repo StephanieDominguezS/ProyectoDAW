@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
  
-    @GetMapping("/index")
+    @GetMapping("/")
     public String homeForm(Model model) {
         
         return "fanadesh-html/index";
