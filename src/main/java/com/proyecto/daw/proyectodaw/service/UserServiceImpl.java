@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proyecto.daw.proyectodaw.dao.RolDao;
 import com.proyecto.daw.proyectodaw.dao.UserDao;
 import com.proyecto.daw.proyectodaw.domain.User;
 import com.proyecto.daw.proyectodaw.dto.UserDto;
