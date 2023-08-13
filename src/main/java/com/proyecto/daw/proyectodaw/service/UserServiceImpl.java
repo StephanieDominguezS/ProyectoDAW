@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.proyecto.daw.proyectodaw.dao.RolDao;
 import com.proyecto.daw.proyectodaw.dao.UserDao;
-import com.proyecto.daw.proyectodaw.domain.Rol;
 import com.proyecto.daw.proyectodaw.domain.User;
 import com.proyecto.daw.proyectodaw.dto.UserDto;
 
@@ -21,23 +20,21 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private RolDao rol;
+    //@Autowired
+    //private RolDao rol;
 
     @Override
     public List<UserDto> listAll() {
-        
+
         List<UserDto> usersLits = new ArrayList<>();
-        
-        userDao.findAll().forEach(x->
-                            usersLits.add(UserDto.builder()
-                                .userName(x.getUserName())
-                                .password(x.getPassword())
-                                .role(x.getRoles().get(0).getRolName()!=null?x.getRoles().get(0).getRolName():"")                                
-                                //.role(rol.findByIdUser(x.getIdUser()).getRolName())
-                                .build())
-                                );
-            
+
+        userDao.findAll().forEach(x -> usersLits.add(UserDto.builder()
+                .userName(x.getUserName())
+                .password(x.getPassword())
+                // .role(x.getRoles().get(0).getRolName()!=null?x.getRoles().get(0).getRolName():"")
+                // .role(rol.findByIdUser(x.getIdUser()).getRolName())
+                .build()));
+
         return usersLits;
     }
 
@@ -57,13 +54,14 @@ public class UserServiceImpl implements UserService {
                     .build());
 
             log.info("User saved: " + resul + " With IdUser:" + resul.getIdUser());
-
-            var resulRol = rol.save(Rol.builder()
-                    .rolName(userDto.getRole())
-                    .user(resul.getIdUser())
-                    .build());
-
-            log.info("User saved: " + resul + " With rol:" + resulRol.getRolName());
+            /*
+             * var resulRol = rol.save(Rol.builder()
+             * .rolName(userDto.getRole())
+             * .user(resul.getIdUser())
+             * .build());
+             * 
+             * log.info("User saved: " + resul + " With rol:" + resulRol.getRolName());
+             */
             return userDto;
         }
 
@@ -82,6 +80,15 @@ public class UserServiceImpl implements UserService {
         return user != null ? UserDto.builder()
                 .userName(user.getUserName())
                 .password(user.getPassword())
+                .build() : UserDto.builder().build();
+    }
+
+    @Override
+    public UserDto findById(long id) {
+        var resp = userDao.findById(id);
+        return resp.isPresent() ? UserDto.builder()
+                .userName(resp.get().getUserName())
+                .password(resp.get().getPassword())
                 .build() : UserDto.builder().build();
     }
 

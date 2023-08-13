@@ -21,28 +21,16 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "alumno")
-public class Alumno implements Serializable{
+@Table(name = "salon")
+public class Salon implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_alumno", nullable = false)
-    private Long idAlumno;
+    @Column(name = "id_salon", nullable = false)
+    private Long idSalon;
 
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "nombre", length = 250)
     private String nombre;
-
-    @Column(name = "apellido", nullable = true)
-    private String apellido;
-
-    @Column(name = "dni", nullable = true)
-    private String dni;
-
-    @Column(name = "id_user", nullable = true)
-    private Long idUser;
-
-    @Column(name = "id_profesor_for_curso", nullable = true)
-    private Long idAlumnoCurso;
     
 }

@@ -14,4 +14,6 @@ public interface UserService {
 
     public UserDto findByUserName(String userName);
 
+    public UserDto findById(long id);
+
 }
