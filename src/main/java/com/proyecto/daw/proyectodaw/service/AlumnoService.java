@@ -18,5 +18,7 @@ public interface AlumnoService {
 
     public void eliminarAlumno(AlumnoDto alumno);
 
+    public AlumnoDto obtenerAlumnoPorId(Integer id);
+
     
 }

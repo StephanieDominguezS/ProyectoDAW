@@ -28,16 +28,10 @@ public class AlumnoServiceImpl implements AlumnoService {
 
         if (alumno.getIdAlumno() != null) {
 
-            return AlumnoDto.builder()
-                    .codAlumno(alumno.getIdAlumno())
-                    .nombre(alumno.getNombre())
-                    .apellidos(alumno.getApellido())
-                    .user(alumno.getIdUser()!=null?utilService.obtenerUsuarioPorId(alumno.getIdUser()):null)
-                    .cursos(utilService.listarCursosPorAlumno(alumno.getIdAlumno()))
-                    .build();
+            return retornarAlumnoDto(alumno);
         }
 
-        throw new AlumnoException("No se ha encontrado el alumno");
+        throw new AlumnoException("No se ha encontrado el alumno al buscarlo por nombre");
     }
 
     @Override
@@ -47,12 +41,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 
         if (alumno.getIdAlumno() != null) {
 
-            return AlumnoDto.builder()
-                    .codAlumno(alumno.getIdAlumno())
-                    .nombre(alumno.getNombre())
-                    .apellidos(alumno.getApellido())
-                    .user(alumno.getIdUser()!=null?utilService.obtenerUsuarioPorId(alumno.getIdUser()):null)
-                    .build();
+            return retornarAlumnoDto(alumno);
         }
 
         throw new AlumnoException("No se ha encontrado el alumno");
@@ -63,10 +52,7 @@ public class AlumnoServiceImpl implements AlumnoService {
         var alumnos = alumnoDao.findAll();
         List<AlumnoDto> alumnosDto = new ArrayList<>();
         for (var alumno : alumnos) {
-            alumnosDto.add(AlumnoDto.builder()
-                    .nombre(alumno.getNombre())
-                    .apellidos(alumno.getApellido())
-                    .build());
+            alumnosDto.add(retornarAlumnoDto(alumno));
         }
         return alumnosDto;
     }
@@ -80,11 +66,7 @@ public class AlumnoServiceImpl implements AlumnoService {
                 .dni(alumno.getDni())
                 .build());
         if (response.getIdAlumno() != null) {
-            return AlumnoDto.builder()
-                    .codAlumno(response.getIdAlumno())
-                    .nombre(response.getNombre())
-                    .apellidos(response.getApellido())
-                    .build();
+            return obtenerAlumnoPorId(response.getIdAlumno().intValue());
         }
         throw new AlumnoException("No se ha podido guardar el alumno");
 
@@ -97,13 +79,10 @@ public class AlumnoServiceImpl implements AlumnoService {
                 .nombre(alumno.getNombre())
                 .apellido(alumno.getApellidos())
                 .dni(alumno.getDni())
+                .idUser(alumno.getUser() != null ? alumno.getUser().getId() : null)
                 .build());
         if (response.getIdAlumno() != null) {
-            return AlumnoDto.builder()
-                    .codAlumno(response.getIdAlumno())
-                    .nombre(response.getNombre())
-                    .apellidos(response.getApellido())
-                    .build();
+            return obtenerAlumnoPorId(response.getIdAlumno().intValue());
         }
 
         throw new AlumnoException("No se ha podido Actualizar el alumno");
@@ -118,6 +97,32 @@ public class AlumnoServiceImpl implements AlumnoService {
         } else {
             throw new AlumnoException("No se ha podido eliminar el alumno");
         }
+    }
+
+    @Override
+    public AlumnoDto obtenerAlumnoPorId(Integer id) {
+
+        var alumno = alumnoDao.findById(id.longValue());
+
+        if (alumno.isPresent()) {
+
+            return retornarAlumnoDto(alumno.get());
+        }
+
+        throw new AlumnoException("No se ha encontrado el alumno");
+    }
+
+    public AlumnoDto retornarAlumnoDto(Alumno alumno) {
+
+        return AlumnoDto.builder()
+                .codAlumno(alumno.getIdAlumno())
+                .nombre(alumno.getNombre())
+                .apellidos(alumno.getApellido())
+                .dni(alumno.getDni())
+                .user(alumno.getIdUser() != null ? utilService.obtenerUsuarioPorId(alumno.getIdUser())
+                        : null)
+                .cursos(utilService.listarCursosPorAlumno(alumno.getIdAlumno()))
+                .build();
     }
 
 }

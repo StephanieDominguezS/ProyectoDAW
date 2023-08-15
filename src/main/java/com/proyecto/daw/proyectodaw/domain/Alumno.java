@@ -30,7 +30,7 @@ public class Alumno implements Serializable{
     @Column(name = "id_alumno", nullable = false)
     private Long idAlumno;
 
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "nombre", nullable = true)
     private String nombre;
 
     @Column(name = "apellido", nullable = true)
@@ -41,8 +41,5 @@ public class Alumno implements Serializable{
 
     @Column(name = "id_user", nullable = true)
     private Long idUser;
-
-    @Column(name = "id_profesor_for_curso", nullable = true)
-    private Long idAlumnoCurso;
     
 }

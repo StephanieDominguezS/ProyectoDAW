@@ -16,6 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Validated
 public class UserDto {
+
+    private Long id;
     
     @NotEmpty(message = "El nombre de usuario no puede estar vacío")
     @Size(min = 4, max = 20, message = "El nombre de usuario debe tener entre 4 y 20 caracteres")
