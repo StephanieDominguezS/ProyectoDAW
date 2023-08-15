@@ -10,9 +10,7 @@ import com.proyecto.daw.proyectodaw.dao.UserDao;
 import com.proyecto.daw.proyectodaw.domain.User;
 import com.proyecto.daw.proyectodaw.dto.UserDto;
 
-import lombok.extern.log4j.Log4j2;
 
-@Log4j2
 @Service
 public class UserServiceImpl implements UserService {
 
