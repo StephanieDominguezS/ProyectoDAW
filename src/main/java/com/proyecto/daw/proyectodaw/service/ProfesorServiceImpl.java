@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 import com.proyecto.daw.proyectodaw.dao.ProfesorDao;
 import com.proyecto.daw.proyectodaw.domain.Profesor;
 import com.proyecto.daw.proyectodaw.dto.ProfesorDto;
+import com.proyecto.daw.proyectodaw.util.UtilService;
 
 @Service
 public class ProfesorServiceImpl implements ProfesorService {
 
     @Autowired
     private ProfesorDao profesorDao;
+
+    @Autowired
+    private UtilService utilService;
 
     @Override
     public ProfesorDto obtenerProfesorPorNombre(String nombre) {
@@ -87,16 +91,6 @@ public class ProfesorServiceImpl implements ProfesorService {
 
     }
 
-    public ProfesorDto retornarProfesorDto(Profesor profesor) {
-        return ProfesorDto.builder()
-                .id(profesor.getIdProfesor())
-                .nombre(profesor.getNombres())
-                .apellidos(profesor.getApellidos())
-                .dni(profesor.getDni())
-                .build();
-
-    }
-
     @Override
     public ProfesorDto obtenerProfesorPorId(Long id) {
         var valor = profesorDao.findById(id);
@@ -104,6 +98,17 @@ public class ProfesorServiceImpl implements ProfesorService {
             return retornarProfesorDto(valor.get());
         }
         throw new UnsupportedOperationException("No se pudo obtener el profesor");
+
+    }
+
+    public ProfesorDto retornarProfesorDto(Profesor profesor) {
+        return ProfesorDto.builder()
+                .id(profesor.getIdProfesor())
+                .nombre(profesor.getNombres())
+                .apellidos(profesor.getApellidos())
+                .dni(profesor.getDni())
+                .curso(utilService.listarCursosPorProfesor(profesor.getIdProfesor()))
+                .build();
 
     }
 

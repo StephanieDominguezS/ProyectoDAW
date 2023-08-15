@@ -1,7 +1,5 @@
 package com.proyecto.daw.proyectodaw.dto;
 
-import java.util.List;
-
 import org.springframework.validation.annotation.Validated;
 
 import lombok.AllArgsConstructor;
@@ -14,16 +12,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Validated
-public class ProfesorDto {
+public class ProfesorForCursoDto {
 
-    private Long id;
-    
-    private String nombre;
+    private Long codProfesorPorCuro;
 
-    private String apellidos;
+    private ProfesorDto profesor;
 
-    private String dni;
+    private CursoDto curso;
 
-    private List<CursoDto> curso;
-    
 }
