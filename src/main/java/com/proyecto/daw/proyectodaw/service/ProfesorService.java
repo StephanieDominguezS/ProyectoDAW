@@ -6,9 +6,11 @@ import com.proyecto.daw.proyectodaw.dto.ProfesorDto;
 
 public interface ProfesorService {
     
-    public List<ProfesorDto> obtenerProfesorPorNombre(String nombre);
+    public ProfesorDto obtenerProfesorPorNombre(String nombre);
 
     public ProfesorDto obtenerProfesorPorDni(String dni);
+
+    public ProfesorDto obtenerProfesorPorId(Long id);
 
     public List<ProfesorDto> obtenerListaProfesores();
 

@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @Validated
 public class ProfesorDto {
+
+    private Long id;
     
     private String nombre;
 
