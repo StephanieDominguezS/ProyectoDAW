@@ -8,10 +8,10 @@ import com.proyecto.daw.proyectodaw.domain.AlumnoForCurso;
 
 public interface AlumnoForCursoDao extends JpaRepository<AlumnoForCurso, Long>{
 
-    public List<AlumnoForCurso> findByIdAlumnoCurso(Long idAlumnoCurso);
+    public List<AlumnoForCurso> findAllByIdAlumnoCurso(Long idAlumnoCurso);
 
-    public List<AlumnoForCurso> findByIdAlumno(Long idAlumno);
+    public List<AlumnoForCurso> findAllByIdAlumno(Long idAlumno);
 
-    public List<AlumnoForCurso> findByIdCurso(Long idCurso); 
+    public List<AlumnoForCurso> findAllByIdCurso(Long idCurso); 
     
 }

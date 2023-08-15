@@ -1,5 +1,8 @@
 package com.proyecto.daw.proyectodaw.controller.api;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -77,7 +80,10 @@ public class CursoApiController {
     public ResponseEntity<Object> deleteCurso(@RequestParam(name = "id") Long id) {
 
         cursoService.eliminar(id);
-        return ResponseEntity.ok().build();
+        Map<String, String> response = new HashMap<>();
+        response.put("codigo", "200");
+        response.put("mensaje", "Profesor eliminado correctamente");
+        return ResponseEntity.ok().body(response);
 
     }
 

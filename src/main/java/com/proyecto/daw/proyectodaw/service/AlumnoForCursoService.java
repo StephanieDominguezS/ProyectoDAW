@@ -10,13 +10,15 @@ public interface AlumnoForCursoService {
 
     public AlumnoForCursoDto guardar(AlumnoForCursoDto alumnoForCurso);
 
-    public void editar(AlumnoForCursoDto alumnoForCurso);
+    public AlumnoForCursoDto editar(AlumnoForCursoDto alumnoForCurso);
 
     public void eliminar(Long id);
 
     public List<AlumnoForCursoDto> findByCodCurso(Long codCurso);
 
     public List<AlumnoForCursoDto> findByCodAlumno(Long codAlumno);
+
+    public List<AlumnoForCursoDto> findAll();
 
 
 }

@@ -22,11 +22,7 @@ public class AlumnoForCursoServiceImpl implements AlumnoForCursoService {
     public AlumnoForCursoDto findById(Long id) {
         var curso = alumnoForCursoRepository.findById(id);
         if (curso.isPresent()) {
-            return AlumnoForCursoDto.builder()
-                    .codAlumnoPorCurso(curso.get().getIdAlumnoCurso())
-                    .alumno(AlumnoDto.builder().codAlumno(curso.get().getIdAlumno()).build())
-                    .curso(CursoDto.builder().id(curso.get().getIdCurso()).build())
-                    .build();
+            return crearAlumnoForCursoDto(curso.get());
         }
         return AlumnoForCursoDto.builder().build();
     }
@@ -40,23 +36,25 @@ public class AlumnoForCursoServiceImpl implements AlumnoForCursoService {
                         .idCurso(alumnoForCurso.getCurso().getId())
                         .build());
         if (registro.getIdAlumnoCurso() != null) {
-            return AlumnoForCursoDto.builder()
-                    .codAlumnoPorCurso(registro.getIdAlumnoCurso())
-                    .alumno(AlumnoDto.builder().codAlumno(registro.getIdAlumno()).build())
-                    .curso(CursoDto.builder().id(registro.getIdCurso()).build())
-                    .build();
+            return crearAlumnoForCursoDto(registro);
         }
         return AlumnoForCursoDto.builder().build();
     }
 
     @Override
-    public void editar(AlumnoForCursoDto alumnoForCurso) {
-        alumnoForCursoRepository.save(
+    public AlumnoForCursoDto editar(AlumnoForCursoDto alumnoForCurso) {
+        var resp = alumnoForCursoRepository.save(
                 AlumnoForCurso.builder()
                         .idAlumnoCurso(alumnoForCurso.getCodAlumnoPorCurso())
                         .idAlumno(alumnoForCurso.getAlumno().getCodAlumno())
                         .idCurso(alumnoForCurso.getCurso().getId())
                         .build());
+
+        if (resp.getIdAlumnoCurso() != null) {
+            return crearAlumnoForCursoDto(resp);
+        }
+
+        return null;
     }
 
     @Override
@@ -66,14 +64,10 @@ public class AlumnoForCursoServiceImpl implements AlumnoForCursoService {
 
     @Override
     public List<AlumnoForCursoDto> findByCodCurso(Long codCurso) {
-        var cursosInscritos = alumnoForCursoRepository.findByIdAlumno(codCurso);
+        var cursosInscritos = alumnoForCursoRepository.findAllByIdAlumno(codCurso);
         List<AlumnoForCursoDto> cursosInscritosDto = new ArrayList<>();
         if (cursosInscritos != null) {
-            cursosInscritos.forEach(curso -> cursosInscritosDto.add(AlumnoForCursoDto.builder()
-                    .codAlumnoPorCurso(curso.getIdAlumnoCurso())
-                    .alumno(AlumnoDto.builder().codAlumno(curso.getIdAlumno()).build())
-                    .curso(CursoDto.builder().id(curso.getIdCurso()).build())
-                    .build()));
+            cursosInscritos.forEach(curso -> cursosInscritosDto.add(crearAlumnoForCursoDto(curso)));
         }
 
         return cursosInscritosDto;
@@ -82,17 +76,34 @@ public class AlumnoForCursoServiceImpl implements AlumnoForCursoService {
     @Override
     public List<AlumnoForCursoDto> findByCodAlumno(Long codAlumno) {
 
-        var cursosInscritos = alumnoForCursoRepository.findByIdAlumno(codAlumno);
+        var cursosInscritos = alumnoForCursoRepository.findAllByIdAlumno(codAlumno);
         List<AlumnoForCursoDto> cursosInscritosDto = new ArrayList<>();
         if (cursosInscritos != null) {
-            cursosInscritos.forEach(curso -> cursosInscritosDto.add(AlumnoForCursoDto.builder()
-                    .codAlumnoPorCurso(curso.getIdAlumnoCurso())
-                    .alumno(AlumnoDto.builder().codAlumno(curso.getIdAlumno()).build())
-                    .curso(CursoDto.builder().id(curso.getIdCurso()).build())
-                    .build()));
+            cursosInscritos.forEach(curso -> cursosInscritosDto.add(crearAlumnoForCursoDto(curso)));
         }
 
         return cursosInscritosDto;
+    }
+
+    @Override
+    public List<AlumnoForCursoDto> findAll() {
+
+        var resp = alumnoForCursoRepository.findAll();
+        List<AlumnoForCursoDto> cursosInscritosDto = new ArrayList<>();
+        for (AlumnoForCurso curso : resp) {
+            cursosInscritosDto.add(crearAlumnoForCursoDto(curso));
+        }
+
+        return cursosInscritosDto;
+
+    }
+
+    public AlumnoForCursoDto crearAlumnoForCursoDto(AlumnoForCurso alumnoForCurso) {
+        return AlumnoForCursoDto.builder()
+                .codAlumnoPorCurso(alumnoForCurso.getIdAlumnoCurso())
+                .alumno(AlumnoDto.builder().codAlumno(alumnoForCurso.getIdAlumno()).build())
+                .curso(CursoDto.builder().id(alumnoForCurso.getIdCurso()).build())
+                .build();
     }
 
 }

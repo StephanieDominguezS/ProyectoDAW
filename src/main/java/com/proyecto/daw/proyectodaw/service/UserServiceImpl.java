@@ -19,76 +19,83 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-    //@Autowired
-    //private RolDao rol;
+    @Autowired
+    private RolService rolService;
 
     @Override
     public List<UserDto> listAll() {
 
         List<UserDto> usersLits = new ArrayList<>();
 
-        userDao.findAll().forEach(x -> usersLits.add(UserDto.builder()
-                .userName(x.getUserName())
-                .password(x.getPassword())
-                // .role(x.getRoles().get(0).getRolName()!=null?x.getRoles().get(0).getRolName():"")
-                // .role(rol.findByIdUser(x.getIdUser()).getRolName())
-                .build()));
+        var resp = userDao.findAll();
+
+        for (User user : resp) {
+            usersLits.add(createUserDto(user));
+        }
 
         return usersLits;
     }
 
     @Override
     public UserDto save(UserDto userDto) {
-        var user = userDao.findByUserName(userDto.getUserName());
-        if (user != null) {
-            return UserDto.builder()
-                    .userName(user.getUserName())
-                    .password(user.getPassword())
-                    .build();
-        } else {
 
-            var resul = userDao.save(User.builder()
-                    .userName(userDto.getUserName())
-                    .password(userDto.getPassword())
-                    .build());
+        var resul = userDao.save(User.builder()
+                .userName(userDto.getUserName())
+                .password(userDto.getPassword())
+                .idRol(userDto.getRole() != null ? userDto.getRole().getId() : null)
+                .build());
 
-            log.info("User saved: " + resul + " With IdUser:" + resul.getIdUser());
-            /*
-             * var resulRol = rol.save(Rol.builder()
-             * .rolName(userDto.getRole())
-             * .user(resul.getIdUser())
-             * .build());
-             * 
-             * log.info("User saved: " + resul + " With rol:" + resulRol.getRolName());
-             */
-            return userDto;
+        if (resul.getIdUser() != null) {
+            return createUserDto(resul);
         }
+
+        throw new UnsupportedOperationException("Ocurrio un erro al intetar agregar al usuario");
 
     }
 
     @Override
     public void delete(long id) {
 
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        userDao.delete(
+                userDao.findById(id).orElseThrow(() -> new UnsupportedOperationException("No se encontro el usuario")));
     }
 
     @Override
     public UserDto findByUserName(String userName) {
 
         var user = userDao.findByUserName(userName);
-        return user != null ? UserDto.builder()
-                .userName(user.getUserName())
-                .password(user.getPassword())
-                .build() : UserDto.builder().build();
+        return user != null ? createUserDto(user) : UserDto.builder().build();
     }
 
     @Override
     public UserDto findById(long id) {
         var resp = userDao.findById(id);
-        return resp.isPresent() ? UserDto.builder()
-                .userName(resp.get().getUserName())
-                .password(resp.get().getPassword())
-                .build() : UserDto.builder().build();
+        return resp.isPresent() ? createUserDto(resp.get()) : UserDto.builder().build();
+    }
+   
+    @Override
+    public UserDto update(UserDto userDto) {
+        
+        var resul = userDao.save(User.builder()
+                .idUser(userDto.getId())
+                .userName(userDto.getUserName())
+                .password(userDto.getPassword())
+                .idRol(userDto.getRole() != null ? userDto.getRole().getId() : null)
+                .build());
+
+        if (resul.getIdUser() != null) {
+            return createUserDto(resul);
+        }
+        throw new UnsupportedOperationException("Ocurrio un erro al intetar actualizar al usuario");
+    }
+
+     public UserDto createUserDto(User user) {
+        return UserDto.builder()
+                .id(user.getIdUser())
+                .userName(user.getUserName())
+                .password(user.getPassword())
+                .role(user.getIdRol() != null ? rolService.findRolById(user.getIdRol()) : null)
+                .build();
     }
 
 }

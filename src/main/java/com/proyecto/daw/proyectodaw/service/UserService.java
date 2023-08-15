@@ -16,4 +16,6 @@ public interface UserService {
 
     public UserDto findById(long id);
 
+    public UserDto update(UserDto userDto);
+
 }

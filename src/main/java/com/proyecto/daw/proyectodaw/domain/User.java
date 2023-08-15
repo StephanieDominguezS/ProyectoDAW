@@ -38,7 +38,7 @@ public class User implements Serializable {
     @Column(name = "user_password", length = 100)
     private String password;
      
-    @Column(name = "id_user_roll")
-    private Long userForRols;
+    @Column(name = "id_rol")
+    private Long idRol;
 
 }

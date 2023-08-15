@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -65,6 +66,17 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }else {
             return ResponseEntity.ok(user);
+        }
+    }
+
+    @PutMapping("/user/update")
+    public ResponseEntity<Object> updateUser(@Valid @RequestBody UserDto user) {
+        
+        var userUpdated = userService.update(user);
+        if (userUpdated == null) {
+            return ResponseEntity.notFound().build();
+        }else {
+            return ResponseEntity.ok(userUpdated);
         }
     }
 
