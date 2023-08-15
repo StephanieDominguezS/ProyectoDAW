@@ -1,0 +1,832 @@
+{
+	"info": {
+		"_postman_id": "9c6ef947-e5cc-4e68-989d-167f5d1ac51d",
+		"name": "ApisProyecto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3281807"
+	},
+	"item": [
+		{
+			"name": "Buscar Alumno de Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-alumno/alumno?id=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno",
+						"alumno"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los alumnos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-alumno/alumno/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno",
+						"alumno",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Alumno",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codAlumno\": 3,\r\n    \"nombre\":\"Prueba1\",\r\n    \"apellidos\":\"Apellidos1\",\r\n    \"dni\":\"54693214\",\r\n    \"user\": {\r\n        \"id\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-alumno/alumno",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno",
+						"alumno"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Alumno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"juan\",\r\n    \"apellidos\":\"peres\",\r\n    \"dni\":\"88554411\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-alumno/alumno",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno",
+						"alumno"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Alumno",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-alumno/alumno?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno",
+						"alumno"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los Cursos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-curso/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-curso",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar el curso por Id o Nombre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-curso/curso?nombre=mate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-curso",
+						"curso"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "nombre",
+							"value": "mate"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Curso",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Comunicacion\",\r\n    \"descripcion\": \"Comunicacion Secundaria\",\r\n    \"horario\": \"Martes 8:00 am - 11:00 am\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-curso/curso",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-curso",
+						"curso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Datos del Curso",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Matematicas\",\r\n    \"descripcion\": \"Matematicas\",\r\n    \"horario\": \"Martes 11:00 am - 1:00 pm\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-curso/curso",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-curso",
+						"curso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un Curso",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-curso/curso?id=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-curso",
+						"curso"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Todos los Profesores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-profesor/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-profesor",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Profesores",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Luiso2\",\r\n    \"apellidos\": \"apedo2s\",\r\n    \"dni\": \"85471236\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-profesor/profesor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-profesor",
+						"profesor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda del Profesor por nombre, id o dni",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-profesor/profesor?dni=85471236",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-profesor",
+						"profesor"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "nombre",
+							"value": "Pedro2",
+							"disabled": true
+						},
+						{
+							"key": "dni",
+							"value": "85471236"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar los datos del profesor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"nombre\": \"Carlos\",\r\n    \"apellidos\": \"Cardenas\",\r\n    \"dni\": \"11142536\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-profesor/profesor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-profesor",
+						"profesor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un Profesor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-profesor/profesor?id=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-profesor",
+						"profesor"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los cursos por profesores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-profesor-curso/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-profesor-curso",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asignar un Profesor a un Curso",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"profesor\": {\r\n        \"id\": 2\r\n    },\r\n    \"curso\": {\r\n        \"id\": 2\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-profesor-curso/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-profesor-curso",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda de Profesor por Curso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-profesor-curso/profesor/all?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-profesor-curso",
+						"profesor",
+						"all"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda de Cursos Por profesor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-profesor-curso/curso/all?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-profesor-curso",
+						"curso",
+						"all"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los cursos por alumnos inscritos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-alumno-curso/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno-curso",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asignar Cursos a los Alumnos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"alumno\": {\r\n        \"codAlumno\": 5\r\n    },\r\n    \"curso\": {\r\n        \"id\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-alumno-curso/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno-curso",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda por Cursos a los alumnos asignados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-alumno-curso/all/curso?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno-curso",
+						"all",
+						"curso"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar los cursos asignado a un alumno",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-alumno-curso/all/alumno?id=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno-curso",
+						"all",
+						"alumno"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar los cursos asignados al alumno",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codAlumnoPorCurso\": 6,\r\n    \"alumno\": {\r\n        \"codAlumno\": 50\r\n    },\r\n    \"curso\": {\r\n        \"id\": 100\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-alumno-curso/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno-curso",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar la asignacion del alumno al curso",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-alumno-curso/delete?id=6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-alumno-curso",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-user/user/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-user",
+						"user",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los roles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-rol/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-rol",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar un Rol",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descripcion\":\"ADMIN6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-rol/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-rol",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar la descripción",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"descripcion\": \"ADMIN2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-rol/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-rol",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Rol",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api-rol/delete?id=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-rol",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar los datos de un usuario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"userName\":\"Cambio1\",\r\n    \"password\":\"valor\",\r\n    \"role\":{\r\n        \"id\":1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api-user/user/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api-user",
+						"user",
+						"update"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
