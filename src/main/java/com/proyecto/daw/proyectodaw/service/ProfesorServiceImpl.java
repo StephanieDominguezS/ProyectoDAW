@@ -25,7 +25,7 @@ public class ProfesorServiceImpl implements ProfesorService {
         var resp = profesorDao.findByNombres(nombre);
         if (resp.isPresent())
             return retornarProfesorDto(resp.get());
-        throw new UnsupportedOperationException("No se pudo obtener el profesor");
+        throw new UnsupportedOperationException("No se pudo obtener el profesor cuando se busco por nombres");
     }
 
     @Override
