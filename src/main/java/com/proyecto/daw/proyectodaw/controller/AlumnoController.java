@@ -17,12 +17,12 @@ public class AlumnoController {
 
     @Autowired
     private AlumnoService alumnoService;
-    
+
     @GetMapping("/alumnos")
     public String homeForm(Model model) {
-    
+
         model.addAttribute("alumnos", alumnoService.obtenerListaAlumnos());
-        
+
         return "alumno";
     }
 
@@ -30,14 +30,13 @@ public class AlumnoController {
     public String editarForm(Model model, @PathVariable Optional<Object> id) {
 
         AlumnoDto alumno = new AlumnoDto();
-        
-        if(id.isPresent() && !id.get().equals("new")) {
+
+        if (id.isPresent() && !id.get().equals("new")) {
             alumno = alumnoService.obtenerAlumnoPorId(Integer.parseInt(id.get().toString()));
         }
 
-    
         model.addAttribute("alumno", alumno);
-        
+
         return "alumno/edit";
     }
 
@@ -45,9 +44,9 @@ public class AlumnoController {
     public String deleteForm(Model model, @PathVariable Integer id) {
 
         var alumno = alumnoService.obtenerAlumnoPorId(id);
-    
+
         alumnoService.eliminarAlumno(alumno);
-        
+
         return "redirect:/alumnos";
     }
 
@@ -55,7 +54,7 @@ public class AlumnoController {
     public String saveForm(Model model, AlumnoDto alumno) {
 
         alumnoService.editarAlumno(alumno);
-        
+
         return "redirect:/alumnos";
     }
 

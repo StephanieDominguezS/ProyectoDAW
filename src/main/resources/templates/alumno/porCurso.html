@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <title>Intranet</title>
+  </head>
+  <body>
+    <header th:replace="sections/headers :: headerGobal"></header>
+    <br />
+
+
+    <div class="container">
+        <div class="container row">
+          <span class="col-12 d-flex justify-content-end">
+            <a class="btn btn-outline-success" 
+            th:href="@{/alumno/} + ${codAlumno} + @{/curso/add/}"><i class="bi bi-person-plus-fill"></i> Agregar</a>
+          </span>
+        </div>
+        <br />
+        <div class="card text-bg-light">
+          <div class="card-header">
+              <h3 class="card-title" id="mydescAlumnos">Lista los Cursos del Alumno</h3>
+          </div>
+          <div class="card-body">
+              <table class="table table-striped" aria-describedby="mydescAlumnos">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="d-none">#</th>
+                      <th scope="col" class="d-none">#curso</th>
+                      <th scope="col">Nombre del Alum.</th>
+                      <th scope="col">Curso</th>
+                      <th scope="col">Horario</th>
+                      <th scope="col">Eliminar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="curso, contador : ${cursos}">
+                      <th scope="row" class="d-none">[[${codAlumno}]]</th>
+                      <td class="d-none">[[${curso.id}]]</td>
+                      <td>[[${nombreAlumno}]]</td>                      
+                      <td>[[${curso.nombre}]]</td>
+                      <td>[[${curso.horario}]]</td>
+                      <td>
+                          <a class="btn btn-outline-primary"
+                          th:href="@{/alumno/} + ${codAlumno} + @{/curso/} + ${id} + @{/delete}">
+                          <i class="bi bi-trash-fill"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+          <div class="card-footer text-body-secondary">
+            Total de Cursos del Alumnos: [[${cursos.size()}]]
+          </div>
+        </div>
+  
+    </div>
+
+
+
+    <footer th:replace="sections/footer :: footer"></footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.proyecto.daw.proyectodaw.dto.AlumnoDto;
 import com.proyecto.daw.proyectodaw.dto.CursoDto;
 import com.proyecto.daw.proyectodaw.service.CursoService;
 
