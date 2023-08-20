@@ -22,7 +22,7 @@ public class CursoServiceImpl implements CursoService {
 
         var curso = cursoDao.findByIdCurso(id);
 
-        if (curso.isPresent()) {
+        if (curso.isPresent() && curso.get().getIdCurso() != null) {
             return retortanarCursoDto(curso.get());
         }
 
