@@ -94,11 +94,10 @@ public class ProfesorServiceImpl implements ProfesorService {
     @Override
     public ProfesorDto obtenerProfesorPorId(Long id) {
         var valor = profesorDao.findById(id);
-        if (valor.isPresent()) {
+        if (valor.isPresent() && valor.get().getIdProfesor() != null) {
             return retornarProfesorDto(valor.get());
         }
-        throw new UnsupportedOperationException("No se pudo obtener el profesor");
-
+        return ProfesorDto.builder().build();
     }
 
     public ProfesorDto retornarProfesorDto(Profesor profesor) {
