@@ -39,8 +39,6 @@ public class AlumnoForCursoControlle {
     @GetMapping("/alumno/{id}/curso/{idCurso}/delete")
     public String deleteForCurso(Model model, @PathVariable Integer id, @PathVariable Integer idCurso) {
 
-        System.out.println("id: " + id + " idCurso: " + idCurso);
-
         var alumnoPorCursoLis = alumnoForCursoService.findByCodAlumno(id.longValue());
 
         alumnoPorCursoLis.forEach(alumnoPorCurso -> {
