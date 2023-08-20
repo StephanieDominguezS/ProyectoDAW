@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Fanadesh</title>
+
+    <!-- bootstrap core css -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <!-- progress bar style -->
+    <link th:href="@{/css/css-circular-prog-bar.css}" rel="stylesheet" />
+    <!-- fonts style -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome stylesheet -->
+    <link
+      th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}"
+      rel="stylesheet"
+    />
+    <!-- custom styles for this template -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link th:href="@{/css/responsive.css}" rel="stylesheet" />
+
+    <!-- Thymeleaf expressions for local resources -->
+    <link th:href="@{/css/css-circular-prog-bar.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- contact section -->
+    <section class="contact_section" th:fragment="contactSection">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center d-md-block">
+              <h2 th:text="#{contact.title}">Contact Us</h2>
+            </div>
+            <form action="#">
+              <div class="contact_form-container">
+                <div>
+                  <div>
+                    <input type="text" placeholder="Name" />
+                  </div>
+                  <div>
+                    <input type="email" placeholder="Email" />
+                  </div>
+                  <div>
+                    <input type="text" placeholder="Phone Number" />
+                  </div>
+                  <div class="mt-5">
+                    <input type="text" placeholder="Message" />
+                  </div>
+                  <div class="mt-5">
+                    <button type="submit" th:text="#{send}">send</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div class="contact_img-box">
+              <img th:src="@{/images/students.jpg}" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end contact section -->
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+  </body>
+</html>
