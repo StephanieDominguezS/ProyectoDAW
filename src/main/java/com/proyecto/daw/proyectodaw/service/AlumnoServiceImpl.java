@@ -104,12 +104,11 @@ public class AlumnoServiceImpl implements AlumnoService {
 
         var alumno = alumnoDao.findById(id.longValue());
 
-        if (alumno.isPresent()) {
+        if (alumno.isPresent() && alumno.get().getIdAlumno() != null) {
 
             return retornarAlumnoDto(alumno.get());
         }
-
-        throw new AlumnoException("No se ha encontrado el alumno");
+        return AlumnoDto.builder().build();
     }
 
     public AlumnoDto retornarAlumnoDto(Alumno alumno) {

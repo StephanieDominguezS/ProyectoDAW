@@ -1,46 +1,82 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Home</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <style>
-        .img-thumbnail {
-            width: 15%;
-        }
-    </style>
-</head>
-<body>
-    <div class="container mt-5">
-        <!-- Logo -->
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <img src="https://th.bing.com/th/id/OIP.LTHXtlv3LeQBn5X9Pte9wQHaEF?pid=ImgDet&rs=1" class="img-fluid" alt="Logo">
-            </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header th:replace="sections/headers :: headerGobal"></header>
+    <br />
+
+    <div class="container">
+      <div class="container row">
+        <span class="col-12 d-flex justify-content-end">
+          <a class="btn btn-outline-success"
+            th:href="@{/alumno/editar/} + 'new'"
+            ><i class="bi bi-person-plus-fill"></i> Agregar</a>
+        </span>
+      </div>
+      <br />
+      <div class="card text-bg-light">
+        <div class="card-header">
+            <h3 class="card-title" id="mydescAlumnos">Lista de Alumnos</h3>
         </div>
-        <!-- Opciones -->
-        <div class="row mt-3">
-            <div class="col-md-12">
-                <a href="/cursos_horios" class="btn btn-primary btn-block mb-3">                    
-                    Cursos y Horario
-                </a>
-            </div>
-            <div class="col-md-12 text-right"> <!-- Agregamos la clase "text-right" para alinear a la derecha -->
-                <a href="/salones" class="btn btn-primary btn-block mb-3">                    
-                    Salones
-                </a>
-            </div>
-            <div class="col-md-12">
-                <a href="/profesores" class="btn btn-primary btn-block mb-3">
-                    Profesores
-                </a>
-            </div>
+        <div class="card-body">
+            <table class="table table-striped" aria-describedby="mydescAlumnos">
+                <thead>
+                  <tr>
+                    <th scope="col" class="d-none">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Dni</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="alumno, contador : ${alumnos}">
+                    <th scope="row" class="d-none">[[${alumno.codAlumno}]]</th>
+                    <td>[[${alumno.nombre}]]</td>
+                    <td>[[${alumno.apellidos}]]</td>
+                    <td>[[${alumno.dni}]]</td>
+                    <td>
+                      <a class="btn btn-outline-primary"
+                      th:href="@{/alumno/editar/} + ${alumno.codAlumno}">
+                      <i class="bi bi-pencil-square"></i></a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-primary"
+                        th:href="@{/alumno/delete/} + ${alumno.codAlumno}">
+                        <i class="bi bi-trash-fill"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
-        <!-- Botón de cierre de sesión -->
-        <div class="row mt-3">
-            <div class="col-md-12 text-center">
-                <a href="/home" class="btn btn-danger">Volver</a>
-            </div>
+        <div class="card-footer text-body-secondary">
+          Total de Alumnos: [[${alumnos.size()}]]
         </div>
+      </div>
+
     </div>
-</body>
+
+    <footer th:replace="sections/footer :: footer"></footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
