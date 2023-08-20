@@ -41,6 +41,15 @@ public class AlumnoForCursoControlle {
 
         System.out.println("id: " + id + " idCurso: " + idCurso);
 
+        var alumnoPorCursoLis = alumnoForCursoService.findByCodAlumno(id.longValue());
+
+        alumnoPorCursoLis.forEach(alumnoPorCurso -> {
+            if (alumnoPorCurso.getCurso().getId().equals(idCurso.longValue())) {
+                alumnoForCursoService.eliminar(alumnoPorCurso.getCodAlumnoPorCurso());
+                return;
+            }
+        });
+
         return "redirect:/alumno/".concat(id.toString()).concat("/curso");
     }
 
