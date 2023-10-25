@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Site Metas -->
+    <meta name="keywords" th:content="${metaKeywords}" />
+    <meta name="description" th:content="${metaDescription}" />
+    <meta name="author" th:content="${metaAuthor}" />
+
+    <title th:text="${pageTitle}">Fanadesh</title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
+    <!-- progress barstle -->
+    <link rel="stylesheet" th:href="@{/css/css-circular-prog-bar.css}" />
+    <!-- fonts style -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+    />
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link th:href="@{/css/responsive.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/css-circular-prog-bar.css}" />
+  </head>
+
+  <body class="sub_page">
+    <div class="top_container">
+      <!-- header section strats -->
+      <header th:replace="fanadesh-html/sections/headers :: fanadeshHeaders" ></header>
+    </div>
+    <!-- end header section -->
+
+    <div class="common_style">
+      <!-- admission section -->
+      <section class="admission_section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="admission_detail-box">
+                <h3 th:text="#{admission.title}">Admission open</h3>
+                <p th:text="#{admission.description}">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate
+                </p>
+                <div class="">
+                  <a
+                    href=""
+                    class="call_to-btn btn_white-border"
+                    th:text="#{readMore}"
+                    >Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="admission_img-container">
+                <img th:src="@{/images/admission.png}" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end admission section -->
+    </div>
+
+    <!-- Pre Footer section -->
+    <section th:replace="fanadesh-html/sections/preFooterHeaders :: preFooterHeaders" ></section>
+    <!-- end Pre Footer section -->
+
+    <!-- footer section -->
+    <section th:replace="fanadesh-html/sections/footer :: footerHeaders" ></section>
+    <!-- footer section -->
+
+    <script th:src="@{/js/jquery-3.4.1.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+  </body>
+</html>

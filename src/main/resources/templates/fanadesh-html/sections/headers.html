@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Fanadesh</title>
+
+    <!-- bootstrap core css -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <!-- progress bar style -->
+    <link th:href="@{/css/css-circular-prog-bar.css}" rel="stylesheet" />
+    <!-- fonts style -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome stylesheet -->
+    <link
+      th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}"
+      rel="stylesheet"
+    />
+    <!-- custom styles for this template -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link th:href="@{/css/responsive.css}" rel="stylesheet" />
+
+    <!-- Thymeleaf expressions for local resources -->
+    <link th:href="@{/css/css-circular-prog-bar.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="top_container">
+      <!-- header section starts -->
+      <header class="header_section" th:fragment="fanadeshHeaders">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" th:href="@{/}">
+              <span> Fanadesh </span>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div
+                class="d-flex ml-auto flex-column flex-lg-row align-items-center"
+              >
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}" th:text="#{nav.home}">
+                      Home <span class="sr-only">(current)</span></a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about}" th:text="#{nav.about}"> About </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admission}" th:text="#{nav.admission}"> Admission </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/why}" th:text="#{nav.why}"> Why Us </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact}" th:text="#{nav.contact}">Contact Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}" th:text="#{nav.intranet}">Intranet</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>      
+    </div>
+    <!-- end header section -->
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+  </body>
+</html>

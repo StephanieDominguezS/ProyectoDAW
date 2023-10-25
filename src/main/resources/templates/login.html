@@ -1,27 +1,99 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="col-md-6 offset-md-3">
-            <h2>Login</h2>
-            <form th:action="@{/login}" th:object="${userDto}" method="post">
-                <div class="form-group">
-                    <label for="userName">Username:</label>
-                    <input type="text" class="form-control" id="userName" th:field="*{userName}" required>
-                    <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" th:field="*{password}" required>
-                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-        </div>
+<html lang="es">
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Fanadesh</title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <!-- progress barstle -->
+    <link rel="stylesheet" href="css/css-circular-prog-bar.css" />
+    <!-- fonts style -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font wesome stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+    />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/css-circular-prog-bar.css" />
+  </head>
+
+  <body class="sub_page">
+    <div class="top_container">
+      <!-- header section strats -->
+      <header
+        th:replace="fanadesh-html/sections/headers :: fanadeshHeaders"
+      ></header>
     </div>
-</body>
+    <!-- end header section -->
+
+    <section class="contact_section" th:fragment="contactSection">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center d-md-block">
+              <h2>Iniciar Sesión</h2>
+            </div>
+            <form th:action="@{/login}" th:object="${userDto}" method="post">
+              <div class="contact_form-container">
+                <div>
+                  <div class="form-group">
+                    <input type="text" placeholder="User Name" id="userName" th:field="*{userName}" required/>
+                    <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="text-danger"></span>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" placeholder="Password" id="password" th:field="*{password}"required/>
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
+                  </div>
+                  <div class="mt-5">
+                    <button type="submit" th:text="#{send}">send</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div class="contact_img-box">
+              <img th:src="@{/images/students.jpg}" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pre Footer section -->
+    <section
+      th:replace="fanadesh-html/sections/preFooterHeaders :: preFooterHeaders"
+    ></section>
+    <!-- end Pre Footer section -->
+
+    <!-- footer section -->
+    <section
+      th:replace="fanadesh-html/sections/footer :: footerHeaders"
+    ></section>
+    <!-- end footer section -->
+
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+  </body>
 </html>

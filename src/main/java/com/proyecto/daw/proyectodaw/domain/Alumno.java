@@ -1,15 +1,12 @@
 package com.proyecto.daw.proyectodaw.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -33,13 +30,16 @@ public class Alumno implements Serializable{
     @Column(name = "id_alumno", nullable = false)
     private Long idAlumno;
 
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "nombre", nullable = true)
     private String nombre;
 
     @Column(name = "apellido", nullable = true)
     private String apellido;
 
-    @OneToMany
-    @JoinColumn(name = "id_curso")
-    private List<Curso> curso;
+    @Column(name = "dni", nullable = true)
+    private String dni;
+
+    @Column(name = "id_user", nullable = true)
+    private Long idUser;
+    
 }

@@ -34,6 +34,4 @@ public class Rol implements Serializable{
     @Column(name="rol_name", length = 50)
     private String rolName;
 
-    @Column(name="id_user", length = 50)
-    private Long user;
 }

@@ -14,4 +14,8 @@ public interface UserService {
 
     public UserDto findByUserName(String userName);
 
+    public UserDto findById(long id);
+
+    public UserDto update(UserDto userDto);
+
 }

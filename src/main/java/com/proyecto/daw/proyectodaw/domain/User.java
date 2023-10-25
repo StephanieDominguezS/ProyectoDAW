@@ -1,15 +1,12 @@
 package com.proyecto.daw.proyectodaw.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -40,9 +37,8 @@ public class User implements Serializable {
 
     @Column(name = "user_password", length = 100)
     private String password;
- 
-    @OneToMany
-    @JoinColumn(name = "id_user")
-    private List<Rol> roles;
+     
+    @Column(name = "id_rol")
+    private Long idRol;
 
 }
