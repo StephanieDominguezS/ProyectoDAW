@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.proyecto.daw.proyectodaw.domain.Alumno;
 import com.proyecto.daw.proyectodaw.dto.AlumnoDto;
 import com.proyecto.daw.proyectodaw.dto.AlumnoForCursoDto;
 import com.proyecto.daw.proyectodaw.dto.CursoDto;
@@ -67,12 +66,10 @@ public class AsginarCursoAlumnoController {
     @PostMapping("/asignar-curso-alumno/save")
     public String saveForm(Model model, AlumnoForCursoDto alumnoForCursoDto) {
 
-        System.out.println("alumnoForCursoDto: " + alumnoForCursoDto);
-
         alumnoForCursoService.editar(alumnoForCursoDto);
 
         return "redirect:/asignar-curso-alumno";
-        //return "";
+
     }
 
     @GetMapping("/asignar-curso-alumno/delete/{id}")
