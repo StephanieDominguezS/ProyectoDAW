@@ -34,7 +34,7 @@ public class AlumnoForCurso implements Serializable{
     @Column(name = "id_alumno", nullable = false)
     private Long idAlumno;
 
-    @Column(name = "id_user", nullable = false)
+    @Column(name = "id_curso", nullable = false)
     private Long idCurso;
     
     
